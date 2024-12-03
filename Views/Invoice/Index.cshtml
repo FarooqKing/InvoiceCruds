@@ -1,0 +1,74 @@
+﻿@model IEnumerable<InvoiceCruds.Models.InvoiceDetail>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+        <h1>Invoice Detail</h1>
+
+ 
+            <a asp-action="Create" class="btn btn-primary d-flex justify-content-center flex-column ">Create New</a>
+   
+    </div>
+    <div class="card-body">
+        <div style="overflow-x: auto; white-space: nowrap;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.InvoiceNo)</th>
+                        <th>@Html.DisplayNameFor(model => model.CustomerName)</th>
+                        <th>@Html.DisplayNameFor(model => model.Address)</th>
+                        <th>@Html.DisplayNameFor(model => model.Description)</th>
+                        <th>@Html.DisplayNameFor(model => model.Quantity)</th>
+                        <th>@Html.DisplayNameFor(model => model.Discount1)</th>
+                        <th>@Html.DisplayNameFor(model => model.Discount2)</th>
+                        <th>@Html.DisplayNameFor(model => model.AddTax)</th>
+                        <th>@Html.DisplayNameFor(model => model.Date)</th>
+                        <th>@Html.DisplayNameFor(model => model.AreaId)</th>
+                        <th>@Html.DisplayNameFor(model => model.BatchNo)</th>
+                        <th>@Html.DisplayNameFor(model => model.Price)</th>
+                        <th>@Html.DisplayNameFor(model => model.ExpiryDate)</th>
+                        <th>@Html.DisplayNameFor(model => model.MDelete)</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.InvoiceNo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.CustomerName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Discount1)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Discount2)</td>
+                            <td>@Html.DisplayFor(modelItem => item.AddTax)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td>@Html.DisplayFor(modelItem => item.AreaId)</td>
+                            <td>@Html.DisplayFor(modelItem => item.BatchNo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ExpiryDate)</td>
+                            <td>
+                              <div class="d-flex justify-content-between">
+                                    <a asp-action="Edit" class="btn btn-sm m-2 btn-primary" asp-route-id="@item.InvoiceNo"><i class="fa fa-edit "></i></a>
+                                    |
+                                    <form asp-action="Delete" method="post" class="deleteForm">
+                                        <input type="hidden" name="id" value="@item.InvoiceNo" asp-for="@item.InvoiceNo" />
+                                        <button type="submit" class="btn btn-danger btn-sm m-2">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
+                              </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
