@@ -2,6 +2,7 @@
 using InvoiceCruds.Models;
 using InvoiceCruds.UnitOfWork;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace InvoiceCruds.Controllers
 {
@@ -14,8 +15,30 @@ namespace InvoiceCruds.Controllers
             _colorRepo = categoryRepo;
 
         }
+
+        public async Task LoadCityDDL()
+        {
+            IEnumerable<City> itemList = await _colorRepo.city.GetAllAsync();
+            List<SelectListItem> selectListItems = new List<SelectListItem>();
+
+            if (itemList != null)
+            {
+                foreach (var item in itemList)
+                {
+                    selectListItems.Add(new SelectListItem { Text = item.AreaName.ToString(), Value = item.AreaId.ToString() });
+                }
+            }
+            else
+            {
+                // Log an error or handle the case where roles are not returned correctly
+                Console.WriteLine("Item list is null.");
+            }
+
+            ViewBag.AreaId = selectListItems;
+        }
         public async Task<IActionResult> Index()
         {
+            await LoadCityDDL();
             var color = await _colorRepo.invoiceDetail.GetAllAsync();
 
             return View(color);
@@ -24,6 +47,7 @@ namespace InvoiceCruds.Controllers
         // GET: Brands/Create
         public async Task<IActionResult> Create()
         {
+            await LoadCityDDL();
 
             return View();
         }

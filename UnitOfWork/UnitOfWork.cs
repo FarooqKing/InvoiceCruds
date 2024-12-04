@@ -1,4 +1,5 @@
-﻿using InvoiceCruds.Iservice;
+﻿using Invoice_Cruds.Iservice;
+using InvoiceCruds.Iservice;
 
 namespace InvoiceCruds.UnitOfWork
 {
@@ -6,10 +7,12 @@ namespace InvoiceCruds.UnitOfWork
     {
 
         public IInvoiceDetail invoiceDetail { get; set; }
+        public ICity city{ get; set; }
 
-        public UnitOfWork(IInvoiceDetail invoiceDetails)
+        public UnitOfWork(IInvoiceDetail invoiceDetails, ICity city)
         {
             invoiceDetail = invoiceDetails;
+            this.city = city;
         }
 
     }

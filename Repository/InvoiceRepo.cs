@@ -59,6 +59,17 @@ namespace InvoiceCruds.Repository
                 return await conn.QueryFirstOrDefaultAsync<InvoiceDetail>("spInvoiceDetail_GetById", parameters, commandType: CommandType.StoredProcedure);
             }
         }
+        // Get Report InvoiceDetail by ID
+        public async Task<InvoiceDetail> GetReportByIdAsync(int id)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@InvoiceNo", id);
+
+            using (var conn = _context.CreateConnection())
+            {
+                return await conn.QueryFirstOrDefaultAsync<InvoiceDetail>("spGetInvoiceCalculatedDetails", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
 
         // Update an existing InvoiceDetail
         public async Task<bool> UpdateAsync(InvoiceDetail invoice)

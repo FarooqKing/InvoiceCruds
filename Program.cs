@@ -1,3 +1,5 @@
+using Invoice_Cruds.Iservice;
+using Invoice_Cruds.Repository;
 using InvoiceCruds.DbContext;
 using InvoiceCruds.Iservice;
 using InvoiceCruds.Repository;
@@ -10,6 +12,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<DapperDbContext>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddTransient<IInvoiceDetail, InvoiceRepo>();
+builder.Services.AddTransient<ICity, CityRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

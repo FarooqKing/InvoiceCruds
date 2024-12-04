@@ -49,13 +49,15 @@
                             <td>@Html.DisplayFor(modelItem => item.Discount2)</td>
                             <td>@Html.DisplayFor(modelItem => item.AddTax)</td>
                             <td>@Html.DisplayFor(modelItem => item.Date)</td>
-                            <td>@Html.DisplayFor(modelItem => item.AreaId)</td>
+                            <td>@Html.DisplayFor(modelItem => item.)</td>
                             <td>@Html.DisplayFor(modelItem => item.BatchNo)</td>
                             <td>@Html.DisplayFor(modelItem => item.Price)</td>
                             <td>@Html.DisplayFor(modelItem => item.ExpiryDate)</td>
                             <td>
                               <div class="d-flex justify-content-between">
                                     <a asp-action="Edit" class="btn btn-sm m-2 btn-primary" asp-route-id="@item.InvoiceNo"><i class="fa fa-edit "></i></a>
+                                    |
+                                    <a asp-action="Edit" class="btn btn-sm m-2 btn-primary" asp-route-id="@item.InvoiceNo"> Report </a>
                                     |
                                     <form asp-action="Delete" method="post" class="deleteForm">
                                         <input type="hidden" name="id" value="@item.InvoiceNo" asp-for="@item.InvoiceNo" />

@@ -1,13 +1,11 @@
-﻿using InvoiceCruds.Models;
+﻿using Invoice_Cruds.Iservice;
+using InvoiceCruds.Models;
 
 namespace InvoiceCruds.Iservice
 {
-    public interface IInvoiceDetail
+    public interface IInvoiceDetail :IGeneric<InvoiceDetail>
     {
-        Task<int> AddAsync(InvoiceDetail entity);
-        Task<bool> UpdateAsync(InvoiceDetail entity);
-        Task<bool> DeleteAsync(int id);
-        Task<IEnumerable<InvoiceDetail>> GetAllAsync();
-        Task<InvoiceDetail?> GetByIdAsync(int id);
+      
+        Task<InvoiceDetail?> GetReportByIdAsync(int id);
     }
 }
